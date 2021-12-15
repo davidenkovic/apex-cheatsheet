@@ -1,4 +1,4 @@
-= Cheatsheet APEX (Noch nicht fertig) Clicky Clicky
+= Cheatsheet APEX (Noch nicht fertig)
 
 == Tree SQl Code
 
