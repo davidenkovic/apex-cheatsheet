@@ -357,51 +357,6 @@ CREATE TABLE abstimmung_ergebnis(
 
 image::images/image-2021-12-15-12-02-28-951.png[]
 
-
-== Create Tables
-
--> SQL Workshop -> SQL Commands
-
-- Einen Befehl nach der Reihe kopieren sonst nix gehen :(
-
-[source, sql]
-----
-CREATE TABLE abstimmung(
-    kopfid NUMBER(5, 0) NOT NULL,
-    name VARCHAR2(100),
-    CONSTRAINT pk_abstimmung PRIMARY KEY(kopfid)
-);
-
-CREATE TABLE abstimmung_position(
-    kopfid NUMBER(5, 0) NOT NULL,
-    posid NUMBER(5, 0) NOT NULL,
-    termin DATE,
-
-    CONSTRAINT pk_abstimmung_position PRIMARY KEY(posid),
-    CONSTRAINT fk_abstimmung FOREIGN KEY(kopfid) REFERENCES abstimmung(kopfid)
-)
-
-CREATE TABLE abstimmung_ergebnis(
-    ergid NUMBER(5, 0),
-    posid NUMBER(5, 0),
-    name VARCHAR2(1000),
-    ergebnis VARCHAR2(1),
-
-    CONSTRAINT pk_abstimmung_ergebnis PRIMARY KEY(ergid),
-    CONSTRAINT fk_abstimmung_position FOREIGN KEY(posid) REFERENCES abstimmung_position(posid),
-    CONSTRAINT chk_abstimmung_ergebnis CHECK(UPPER(ergebnis) LIKE 'Y' OR UPPER(ergebnis) LIKE 'N')
-)
-----
-
-
-== Create Sequences
-* seq_kopfid
-* seq_posid
-* seq_ergid
-
--> SQL-Workshop -> Object Browser -> Rechts aufs Plus -> Sequence
--> Jeweiligen Namen in Sequence Name -> *Next* -> *Create Sequence*
-
 == Doodle komplett
 
 === Create Application
