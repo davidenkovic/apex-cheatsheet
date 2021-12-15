@@ -453,8 +453,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_images_post">2. Images ("POST")</a></li>
 <li><a href="#_wichtiges_aus_dem_doodle_beispiel">3. Wichtiges aus dem Doodle Beispiel</a>
 <ul class="sectlevel2">
-<li><a href="#_create_tables">3.1. Create Tables</a></li>
-<li><a href="#_sequence_erstellen">3.2. Sequence erstellen</a></li>
+<li><a href="#_selecct_list">3.1. Selecct List</a></li>
+<li><a href="#_create_tables">3.2. Create Tables</a></li>
+<li><a href="#_sequence_erstellen">3.3. Sequence erstellen</a></li>
 </ul>
 </li>
 <li><a href="#_allgemein_wichtiges">4. Allgemein Wichtiges</a>
@@ -639,6 +640,12 @@ Die einzelnen Felder müssen gleich sein
 </div>
 <div class="title">Figure 4. neue column (Blob)</div>
 </div>
+<div class="listingblock">
+<div class="title">Blob in report</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sql"><span class="k">Select</span> <span class="n">starnum</span><span class="p">,</span> <span class="n">starname</span><span class="p">,</span> <span class="n">birthplace</span><span class="p">,</span> <span class="n">cntryid</span><span class="p">,</span> <span class="n">starborn</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">dbms_lob</span><span class="p">.</span><span class="n">getlength</span><span class="p">(</span><span class="n">THUMBNAIL</span><span class="p">)</span> <span class="n">THUMBNAIL</span> <span class="k">FROM</span> <span class="n">Star</span><span class="p">;</span></code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -648,7 +655,15 @@ Die einzelnen Felder müssen gleich sein
 <p><strong>Credit: <a href="https://htl-profis.github.io/doodle-anleitung/">htl-profis-doodle</a></strong></p>
 </div>
 <div class="sect2">
-<h3 id="_create_tables"><a class="anchor" href="#_create_tables"></a>3.1. Create Tables</h3>
+<h3 id="_selecct_list"><a class="anchor" href="#_selecct_list"></a>3.1. Selecct List</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sql"><span class="k">select</span> <span class="n">termin</span> <span class="n">d</span><span class="p">,</span> <span class="n">posid</span> <span class="n">r</span> <span class="k">from</span> <span class="n">abstimmung_position</span> <span class="k">where</span> <span class="n">kopfid</span> <span class="o">=</span> <span class="p">:</span><span class="n">P3_KOPFID</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_tables"><a class="anchor" href="#_create_tables"></a>3.2. Create Tables</h3>
 <div class="paragraph">
 <p>SQL Workshop&#8594;SQL Commands</p>
 </div>
@@ -695,7 +710,7 @@ Die Befehle nach der Reihe einfügen
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sequence_erstellen"><a class="anchor" href="#_sequence_erstellen"></a>3.2. Sequence erstellen</h3>
+<h3 id="_sequence_erstellen"><a class="anchor" href="#_sequence_erstellen"></a>3.3. Sequence erstellen</h3>
 <div class="paragraph">
 <p>&#8594; SQL-Workshop<br>
 &#8594; Object Browser<br>
@@ -929,7 +944,7 @@ Wenn man auf eine <strong>Serie</strong> <em>Clicky Clicky</em> macht, hat man d
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-12-15 19:52:00 UTC
+Last updated 2021-12-15 20:20:55 UTC
 </div>
 </div>
 <style>
