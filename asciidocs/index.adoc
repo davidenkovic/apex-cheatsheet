@@ -123,9 +123,22 @@ image::images/image-2021-12-15-20-22-08-355.png[]
 
 
 
+.Blob in report
+[source,sql]
+----
+Select starnum, starname, birthplace, cntryid, starborn, sex, dbms_lob.getlength(THUMBNAIL) THUMBNAIL FROM Star;
+----
+
 == Wichtiges aus dem Doodle Beispiel
 
 *Credit: link:https://htl-profis.github.io/doodle-anleitung/[htl-profis-doodle]*
+
+=== Selecct List
+
+[source,sql]
+----
+select termin d, posid r from abstimmung_position where kopfid = :P3_KOPFID
+----
 
 === Create Tables
 
