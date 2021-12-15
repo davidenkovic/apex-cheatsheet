@@ -51,6 +51,78 @@ IMPORTANT: Bei jedem Textfeld ein *SELECT* schreiben.
 image::images/image-2021-12-15-18-11-16-562.png[]
 
 
+== Images ("POST")
+
+
+.Wenn Button gedrückt wird wird der Process augeführt
+image::images/image-2021-12-15-20-50-29-193.png[]
+
+.Save Process
+[source,sql]
+----
+declare
+    v_blob blob;
+    v_thum blob;
+    v_mimeType varchar2(4000); --Braucht man nicht unbedingt
+    v_count number;
+
+    v_oi_bild   ordimage := null;
+    v_oi_thumb  ordimage := null;
+
+begin
+
+    apex_debug.message('P1_UPLOAD: %s', :P1_UPLOAD); --debug option optional
+
+    select count(*) into v_count from apex_application_temp_files
+          WHERE name = :P1_UPLOAD; -- gibts eine file?
+
+
+
+     if v_count != 0 then
+              SELECT blob_content , mime_type -- optional | file wird selected
+      INTO v_blob, v_mimeType
+      FROM apex_application_temp_files
+      WHERE name = :P1_UPLOAD; -- UPLOAD ist die file
+
+     v_oi_bild  := ordimage(v_blob);
+     v_oi_bild.setproperties();
+     v_oi_thumb := ordimage(v_thum);
+
+     -- Thumbnail generieren
+     v_oi_bild.processcopy(
+       command => 'maxScale=100 100',
+       dest    => v_oi_thumb
+     ); --maxScale -> größe
+
+    v_thum := v_oi_thumb.getContent(); -- zuweisung
+    end if;
+
+
+    UPDATE star
+    SET STARNAME = :P1_STARNAME,
+        BIRTHPLACE = :P1_BIRTHPLACE,
+        CNTRYID = :P1_CNTRYID,
+        STARBORN = :P1_STARBORN,
+        STARDIED = :P1_STARDIED,
+        SEX = :P1_SEX,
+        DEATHCAUSE = :P1_DEATHCAUSE,
+        THUMBNAIL = v_thum --,
+        --MIMETYPE = v_mimeType
+    where STARNUM = :P1_STARNUM;
+
+
+end;
+----
+
+IMPORTANT: Die einzelnen Felder müssen gleich sein
+
+image::images/image-2021-12-15-20-44-17-105.png[]
+
+.neue column (Blob)
+image::images/image-2021-12-15-20-22-08-355.png[]
+
+
+
 == Wichtiges aus dem Doodle Beispiel
 
 *Credit: link:https://htl-profis.github.io/doodle-anleitung/[htl-profis-doodle]*
@@ -197,5 +269,46 @@ image::images/image-2021-12-15-18-27-08-401.png[]
 [source,sql]
 ----
 <img src="#WORKSPACE_IMAGES#Matt_CPU.jpg" width="800" height="600">
+----
+
+== Redirect
+
+Um einen Link zu erstellen, verwenden wir z.B. einen Report mit einer Column.
+
+.Ausgewählte Column
+image::images/image-2021-12-15-18-48-33-425.png[]
+
+Rechts dann unter Identification->Type und dann die gewählte Zeile wählen.
+
+image::images/image-2021-12-15-18-50-33-749.png[]
+
+Weiter unten auf der rechten Seite dann unter Link das auswählen was gemacht werden soll.
+
+.Target auswählen also Seite | und den Link Text also das was angezeigt wird
+image::images/image-2021-12-15-18-51-52-470.png[]
+
+.Beim Target folgendes auswählen um einen Text auf der zweiten Seite anzeigen zu lassen
+image::images/image-2021-12-15-18-53-59-029.png[]
+
+
+== Tree Emp
+
+[source,sql]
+----
+select case when connect_by_isleaf = 1 then 0
+            when level = 1             then 1
+            else                           -1
+       end as status,
+       level,
+       "ENAME" as title,
+       null as icon,
+       "EMPNO" as value,
+       null as tooltip,
+       null as link
+from "#OWNER#"."EMP"
+start with "MGR" is null
+connect by prior "EMPNO" = "MGR"
+order siblings by "ENAME"
+
 ----
 
