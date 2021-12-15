@@ -473,15 +473,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_sequence_erstellen">4.3. Sequence erstellen</a></li>
 </ul>
 </li>
-<li><a href="#_create_tables_2">5. Create Tables</a></li>
-<li><a href="#_create_sequences">6. Create Sequences</a></li>
-<li><a href="#_doodle_komplett">7. Doodle komplett</a>
+<li><a href="#_doodle_komplett">5. Doodle komplett</a>
 <ul class="sectlevel2">
-<li><a href="#_create_application">7.1. Create Application</a></li>
-<li><a href="#_master_detail_page">7.2. Master Detail Page</a></li>
-<li><a href="#_selbst_abstimmen">7.3. Selbst Abstimmen</a></li>
-<li><a href="#_graph">7.4. Graph</a></li>
-<li><a href="#_auf_page_1_wechseln">7.5. Auf Page 1 wechseln</a></li>
+<li><a href="#_create_application">5.1. Create Application</a></li>
+<li><a href="#_master_detail_page">5.2. Master Detail Page</a></li>
+<li><a href="#_selbst_abstimmen">5.3. Selbst Abstimmen</a></li>
+<li><a href="#_graph">5.4. Graph</a></li>
+<li><a href="#_auf_page_1_wechseln">5.5. Auf Page 1 wechseln</a></li>
 </ul>
 </li>
 </ul>
@@ -1008,76 +1006,10 @@ Die Befehle nach der Reihe einfügen
 </div>
 </div>
 <div class="sect1">
-<h2 id="_create_tables_2"><a class="anchor" href="#_create_tables_2"></a>5. Create Tables</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>&#8594; SQL Workshop &#8594; SQL Commands</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Einen Befehl nach der Reihe kopieren sonst nix gehen :(</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">abstimmung</span><span class="p">(</span>
-    <span class="n">kopfid</span> <span class="n">NUMBER</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">name</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
-    <span class="k">CONSTRAINT</span> <span class="n">pk_abstimmung</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">kopfid</span><span class="p">)</span>
-<span class="p">);</span>
-
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">abstimmung_position</span><span class="p">(</span>
-    <span class="n">kopfid</span> <span class="n">NUMBER</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">posid</span> <span class="n">NUMBER</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">termin</span> <span class="nb">DATE</span><span class="p">,</span>
-
-    <span class="k">CONSTRAINT</span> <span class="n">pk_abstimmung_position</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">posid</span><span class="p">),</span>
-    <span class="k">CONSTRAINT</span> <span class="n">fk_abstimmung</span> <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">kopfid</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">abstimmung</span><span class="p">(</span><span class="n">kopfid</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">abstimmung_ergebnis</span><span class="p">(</span>
-    <span class="n">ergid</span> <span class="n">NUMBER</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-    <span class="n">posid</span> <span class="n">NUMBER</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-    <span class="n">name</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span>
-    <span class="n">ergebnis</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-
-    <span class="k">CONSTRAINT</span> <span class="n">pk_abstimmung_ergebnis</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ergid</span><span class="p">),</span>
-    <span class="k">CONSTRAINT</span> <span class="n">fk_abstimmung_position</span> <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">posid</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">abstimmung_position</span><span class="p">(</span><span class="n">posid</span><span class="p">),</span>
-    <span class="k">CONSTRAINT</span> <span class="n">chk_abstimmung_ergebnis</span> <span class="k">CHECK</span><span class="p">(</span><span class="k">UPPER</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span> <span class="k">LIKE</span> <span class="s1">'Y'</span> <span class="k">OR</span> <span class="k">UPPER</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span> <span class="k">LIKE</span> <span class="s1">'N'</span><span class="p">)</span>
-<span class="p">)</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_create_sequences"><a class="anchor" href="#_create_sequences"></a>6. Create Sequences</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>seq_kopfid</p>
-</li>
-<li>
-<p>seq_posid</p>
-</li>
-<li>
-<p>seq_ergid</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>&#8594; SQL-Workshop &#8594; Object Browser &#8594; Rechts aufs Plus &#8594; Sequence
-&#8594; Jeweiligen Namen in Sequence Name &#8594; <strong>Next</strong> &#8594; <strong>Create Sequence</strong></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_doodle_komplett"><a class="anchor" href="#_doodle_komplett"></a>7. Doodle komplett</h2>
+<h2 id="_doodle_komplett"><a class="anchor" href="#_doodle_komplett"></a>5. Doodle komplett</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_create_application"><a class="anchor" href="#_create_application"></a>7.1. Create Application</h3>
+<h3 id="_create_application"><a class="anchor" href="#_create_application"></a>5.1. Create Application</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1126,7 +1058,7 @@ Die Befehle nach der Reihe einfügen
 </div>
 </div>
 <div class="sect2">
-<h3 id="_master_detail_page"><a class="anchor" href="#_master_detail_page"></a>7.2. Master Detail Page</h3>
+<h3 id="_master_detail_page"><a class="anchor" href="#_master_detail_page"></a>5.2. Master Detail Page</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1216,7 +1148,7 @@ Die Befehle nach der Reihe einfügen
 </div>
 </div>
 <div class="sect2">
-<h3 id="_selbst_abstimmen"><a class="anchor" href="#_selbst_abstimmen"></a>7.3. Selbst Abstimmen</h3>
+<h3 id="_selbst_abstimmen"><a class="anchor" href="#_selbst_abstimmen"></a>5.3. Selbst Abstimmen</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1366,7 +1298,7 @@ Die Befehle nach der Reihe einfügen
 </div>
 </div>
 <div class="sect2">
-<h3 id="_graph"><a class="anchor" href="#_graph"></a>7.4. Graph</h3>
+<h3 id="_graph"><a class="anchor" href="#_graph"></a>5.4. Graph</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1446,7 +1378,7 @@ Die Befehle nach der Reihe einfügen
 </div>
 </div>
 <div class="sect2">
-<h3 id="_auf_page_1_wechseln"><a class="anchor" href="#_auf_page_1_wechseln"></a>7.5. Auf Page 1 wechseln</h3>
+<h3 id="_auf_page_1_wechseln"><a class="anchor" href="#_auf_page_1_wechseln"></a>5.5. Auf Page 1 wechseln</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1528,7 +1460,7 @@ und zu folgendem ändern</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-12-15 21:02:34 UTC
+Last updated 2021-12-15 21:05:21 UTC
 </div>
 </div>
 <style>
