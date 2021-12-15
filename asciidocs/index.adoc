@@ -1,6 +1,8 @@
 = Cheatsheet APEX (Noch nicht fertig)
 
-== Tree SQl Code
+== Tree
+
+=== SQl Code
 
 [source,sql]
 ----
@@ -10,7 +12,8 @@ select 0 as status,
        null as icon,
        m.mvnum as mvnum,
        null as tooltip,
-       apex_util.prepare_url('f?p='||:app_id||':2:'||:app_session||':T:::P2_Starnum:'||(select starnum from star s where s.starnum = m.starnum)) as link from movstar m
+       apex_util.prepare_url('f?p='||:app_id||':1:'||:app_session||':T:::P1_Starnum:'|| m.starnum) as link from movstar m
+       -- :1: ist die Page Seite | :P1_Starnum: ist der Parameter (Löschen beim einfügen bitte)
 union
 select 1,
        1,
@@ -28,6 +31,25 @@ select -1,
         null,
         null from movie order by mvnum
 ----
+
+* *1* ist der Stamm (oberste)
+* *-1* sind die Äste
+* *0* sind die Blätter
+
+
+
+.Ausgabe
+image::images/image-2021-12-15-18-05-56-642.png[]
+
+Hier wird dann nur beim _Click_ die Id mitgegeben. Um den Namen oder anderes in den Textfields zu bekommen, muss man das dann *Selecten*.
+
+=== Andere Felder
+
+IMPORTANT: Bei jedem Textfeld ein *SELECT* schreiben.
+
+.Select statemend für andere Zeilen
+image::images/image-2021-12-15-18-11-16-562.png[]
+
 
 == Wichtiges aus dem Doodle Beispiel
 
@@ -151,4 +173,29 @@ image::images/image-2021-12-15-15-32-04-008.png[]
 Wenn man aber einen Process `After Submit` auslösen möchte, stellt man das hier ein:
 
 image::images/image-2021-12-15-15-34-48-934.png[]
+
+== Images
+
+Wenn man Bilder einfügen möchte, geht man rechts oben auf das Zeichen mit den Symbolen.
+
+*Location:*
+
+.Location wo das Foto Hochgeladen wird
+image::images/image-2021-12-15-18-21-12-976.png[]
+
+.Bild aussichen und dann *Upload*
+image::images/image-2021-12-15-18-19-16-134.png[]
+
+.Was nach dem # kommt is der Path
+image::images/image-2021-12-15-18-23-29-935.png[]
+
+.Bild Anzeigen
+image::images/image-2021-12-15-18-27-08-401.png[]
+
+.static content
+
+[source,sql]
+----
+<img src="#WORKSPACE_IMAGES#Matt_CPU.jpg" width="800" height="600">
+----
 
