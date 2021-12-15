@@ -444,7 +444,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_tree_sql_code">1. Tree SQl Code</a></li>
+<li><a href="#_tree">1. Tree</a>
+<ul class="sectlevel2">
+<li><a href="#_sql_code">1.1. SQl Code</a></li>
+<li><a href="#_andere_felder">1.2. Andere Felder</a></li>
+</ul>
+</li>
 <li><a href="#_wichtiges_aus_dem_doodle_beispiel">2. Wichtiges aus dem Doodle Beispiel</a>
 <ul class="sectlevel2">
 <li><a href="#_create_tables">2.1. Create Tables</a></li>
@@ -458,13 +463,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_process">3.3. Process</a></li>
 </ul>
 </li>
+<li><a href="#_images">4. Images</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_tree_sql_code"><a class="anchor" href="#_tree_sql_code"></a>1. Tree SQl Code</h2>
+<h2 id="_tree"><a class="anchor" href="#_tree"></a>1. Tree</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_sql_code"><a class="anchor" href="#_sql_code"></a>1.1. SQl Code</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="sql"><span class="k">select</span> <span class="mi">0</span> <span class="k">as</span> <span class="n">status</span><span class="p">,</span>
@@ -473,7 +481,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <span class="k">null</span> <span class="k">as</span> <span class="n">icon</span><span class="p">,</span>
        <span class="n">m</span><span class="p">.</span><span class="n">mvnum</span> <span class="k">as</span> <span class="n">mvnum</span><span class="p">,</span>
        <span class="k">null</span> <span class="k">as</span> <span class="n">tooltip</span><span class="p">,</span>
-       <span class="n">apex_util</span><span class="p">.</span><span class="n">prepare_url</span><span class="p">(</span><span class="s1">'f?p='</span><span class="o">||</span><span class="p">:</span><span class="n">app_id</span><span class="o">||</span><span class="s1">':2:'</span><span class="o">||</span><span class="p">:</span><span class="n">app_session</span><span class="o">||</span><span class="s1">':T:::P2_Starnum:'</span><span class="o">||</span><span class="p">(</span><span class="k">select</span> <span class="n">starnum</span> <span class="k">from</span> <span class="n">star</span> <span class="n">s</span> <span class="k">where</span> <span class="n">s</span><span class="p">.</span><span class="n">starnum</span> <span class="o">=</span> <span class="n">m</span><span class="p">.</span><span class="n">starnum</span><span class="p">))</span> <span class="k">as</span> <span class="n">link</span> <span class="k">from</span> <span class="n">movstar</span> <span class="n">m</span>
+       <span class="n">apex_util</span><span class="p">.</span><span class="n">prepare_url</span><span class="p">(</span><span class="s1">'f?p='</span><span class="o">||</span><span class="p">:</span><span class="n">app_id</span><span class="o">||</span><span class="s1">':1:'</span><span class="o">||</span><span class="p">:</span><span class="n">app_session</span><span class="o">||</span><span class="s1">':T:::P1_Starnum:'</span><span class="o">||</span> <span class="n">m</span><span class="p">.</span><span class="n">starnum</span><span class="p">)</span> <span class="k">as</span> <span class="n">link</span> <span class="k">from</span> <span class="n">movstar</span> <span class="n">m</span>
+       <span class="c1">-- :1: ist die Page Seite | :P1_Starnum: ist der Parameter (Löschen beim einfügen bitte)</span>
 <span class="k">union</span>
 <span class="k">select</span> <span class="mi">1</span><span class="p">,</span>
        <span class="mi">1</span><span class="p">,</span>
@@ -490,6 +499,50 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         <span class="n">mvnum</span><span class="p">,</span>
         <span class="k">null</span><span class="p">,</span>
         <span class="k">null</span> <span class="k">from</span> <span class="n">movie</span> <span class="k">order</span> <span class="k">by</span> <span class="n">mvnum</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>1</strong> ist der Stamm (oberste)</p>
+</li>
+<li>
+<p><strong>-1</strong> sind die Äste</p>
+</li>
+<li>
+<p><strong>0</strong> sind die Blätter</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-05-56-642.png" alt="image 2021 12 15 18 05 56 642">
+</div>
+<div class="title">Figure 1. Ausgabe</div>
+</div>
+<div class="paragraph">
+<p>Hier wird dann nur beim <em>Click</em> die Id mitgegeben. Um den Namen oder anderes in den Textfields zu bekommen, muss man das dann <strong>Selecten</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_andere_felder"><a class="anchor" href="#_andere_felder"></a>1.2. Andere Felder</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Bei jedem Textfeld ein <strong>SELECT</strong> schreiben.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-11-16-562.png" alt="image 2021 12 15 18 11 16 562">
+</div>
+<div class="title">Figure 2. Select statemend für andere Zeilen</div>
 </div>
 </div>
 </div>
@@ -584,7 +637,7 @@ Die Befehle nach der Reihe einfügen
 <div class="content">
 <img src="images/image-2021-12-15-12-22-13-858.png" alt="image 2021 12 15 12 22 13 858">
 </div>
-<div class="title">Figure 1. Einfacher Report mit den Werten einer Tabelle.</div>
+<div class="title">Figure 3. Einfacher Report mit den Werten einer Tabelle.</div>
 </div>
 </div>
 <div class="sect2">
@@ -596,7 +649,7 @@ Die Befehle nach der Reihe einfügen
 <div class="content">
 <img src="images/image-2021-12-15-14-39-54-904.png" alt="image 2021 12 15 14 39 54 904">
 </div>
-<div class="title">Figure 2. Links das erstellte Diagram | Rechts die Oprion Chart</div>
+<div class="title">Figure 4. Links das erstellte Diagram | Rechts die Oprion Chart</div>
 </div>
 <div class="paragraph">
 <p>Unter <strong>Atributes</strong> kann man auswählen was für ein Diagramm es sein soll.</p>
@@ -624,13 +677,13 @@ Wenn man auf eine <strong>Serie</strong> <em>Clicky Clicky</em> macht, hat man d
 <div class="content">
 <img src="images/image-2021-12-15-14-51-55-390.png" alt="image 2021 12 15 14 51 55 390">
 </div>
-<div class="title">Figure 3. Einistellung</div>
+<div class="title">Figure 5. Einistellung</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/image-2021-12-15-14-52-34-703.png" alt="image 2021 12 15 14 52 34 703">
 </div>
-<div class="title">Figure 4. Output</div>
+<div class="title">Figure 6. Output</div>
 </div>
 </div>
 <div class="sect2">
@@ -653,7 +706,7 @@ Wenn man auf eine <strong>Serie</strong> <em>Clicky Clicky</em> macht, hat man d
 <div class="content">
 <img src="images/image-2021-12-15-15-28-38-561.png" alt="image 2021 12 15 15 28 38 561">
 </div>
-<div class="title">Figure 5. Einstellung des Processes</div>
+<div class="title">Figure 7. Einstellung des Processes</div>
 </div>
 <div class="paragraph">
 <p>In dem PL/SQL Code Block schreibt man was der Process machen soll. Hier z.B. setzt er einen Text in ein Textfield.</p>
@@ -665,7 +718,7 @@ Wenn man auf eine <strong>Serie</strong> <em>Clicky Clicky</em> macht, hat man d
 <div class="content">
 <img src="images/image-2021-12-15-15-32-04-008.png" alt="image 2021 12 15 15 32 04 008">
 </div>
-<div class="title">Figure 6. When Button Pressed</div>
+<div class="title">Figure 8. When Button Pressed</div>
 </div>
 <div class="paragraph">
 <p>Wenn man aber einen Process <code>After Submit</code> auslösen möchte, stellt man das hier ein:</p>
@@ -678,10 +731,51 @@ Wenn man auf eine <strong>Serie</strong> <em>Clicky Clicky</em> macht, hat man d
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_images"><a class="anchor" href="#_images"></a>4. Images</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wenn man Bilder einfügen möchte, geht man rechts oben auf das Zeichen mit den Symbolen.</p>
+</div>
+<div class="paragraph">
+<p><strong>Location:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-21-12-976.png" alt="image 2021 12 15 18 21 12 976">
+</div>
+<div class="title">Figure 9. Location wo das Foto Hochgeladen wird</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-19-16-134.png" alt="image 2021 12 15 18 19 16 134">
+</div>
+<div class="title">Figure 10. Bild aussichen und dann <strong>Upload</strong></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-23-29-935.png" alt="image 2021 12 15 18 23 29 935">
+</div>
+<div class="title">Figure 11. Was nach dem # kommt is der Path</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-27-08-401.png" alt="image 2021 12 15 18 27 08 401">
+</div>
+<div class="title">Figure 12. Bild Anzeigen</div>
+</div>
+<div class="listingblock">
+<div class="title">static content</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sql"><span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="nv">"#WORKSPACE_IMAGES#Matt_CPU.jpg"</span> <span class="n">width</span><span class="o">=</span><span class="nv">"800"</span> <span class="n">height</span><span class="o">=</span><span class="nv">"600"</span><span class="o">&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-12-15 14:52:30 UTC
+Last updated 2021-12-15 17:37:11 UTC
 </div>
 </div>
 <style>
