@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
 <link rel="icon" type="image/png" href="themes/favicon.png">
-<title>Cheatsheet APEX (Noch nicht fertig)</title>
+<title>Cheatsheet APEX</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -440,34 +440,50 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Cheatsheet APEX (Noch nicht fertig)</h1>
+<h1>Cheatsheet APEX</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_tree">1. Tree</a>
 <ul class="sectlevel2">
 <li><a href="#_sql_code">1.1. SQl Code</a></li>
-<li><a href="#_andere_felder">1.2. Andere Felder</a></li>
+<li><a href="#_werte_in_den_feldern_setzten">1.2. Werte in den Feldern setzten</a></li>
 </ul>
 </li>
-<li><a href="#_images_post">2. Images ("POST")</a></li>
-<li><a href="#_wichtiges_aus_dem_doodle_beispiel">3. Wichtiges aus dem Doodle Beispiel</a>
+<li><a href="#_images_post">2. Images ("POST")</a>
 <ul class="sectlevel2">
-<li><a href="#_selecct_list">3.1. Selecct List</a></li>
-<li><a href="#_create_tables">3.2. Create Tables</a></li>
-<li><a href="#_sequence_erstellen">3.3. Sequence erstellen</a></li>
+<li><a href="#_blob_in_tabelle_als_column">2.1. Blob in Tabelle als Column</a></li>
+<li><a href="#_report_füllen">2.2. Report füllen</a></li>
 </ul>
 </li>
-<li><a href="#_allgemein_wichtiges">4. Allgemein Wichtiges</a>
+<li><a href="#_allgemein_wichtiges">3. Allgemein Wichtiges</a>
 <ul class="sectlevel2">
-<li><a href="#_classic_report">4.1. Classic Report</a></li>
-<li><a href="#_diagramme">4.2. Diagramme</a></li>
-<li><a href="#_process">4.3. Process</a></li>
+<li><a href="#_classic_report">3.1. Classic Report</a></li>
+<li><a href="#_diagramme">3.2. Diagramme</a></li>
+<li><a href="#_process">3.3. Process</a></li>
+<li><a href="#_images">3.4. Images</a></li>
+<li><a href="#_redirect">3.5. Redirect</a></li>
+<li><a href="#_tree_emp">3.6. Tree Emp</a></li>
 </ul>
 </li>
-<li><a href="#_images">5. Images</a></li>
-<li><a href="#_redirect">6. Redirect</a></li>
-<li><a href="#_tree_emp">7. Tree Emp</a></li>
+<li><a href="#_wichtiges_aus_dem_doodle_beispiel">4. Wichtiges aus dem Doodle Beispiel</a>
+<ul class="sectlevel2">
+<li><a href="#_selecct_list">4.1. Selecct List</a></li>
+<li><a href="#_create_tables">4.2. Create Tables</a></li>
+<li><a href="#_sequence_erstellen">4.3. Sequence erstellen</a></li>
+</ul>
+</li>
+<li><a href="#_create_tables_2">5. Create Tables</a></li>
+<li><a href="#_create_sequences">6. Create Sequences</a></li>
+<li><a href="#_doodle_komplett">7. Doodle komplett</a>
+<ul class="sectlevel2">
+<li><a href="#_create_application">7.1. Create Application</a></li>
+<li><a href="#_master_detail_page">7.2. Master Detail Page</a></li>
+<li><a href="#_selbst_abstimmen">7.3. Selbst Abstimmen</a></li>
+<li><a href="#_graph">7.4. Graph</a></li>
+<li><a href="#_auf_page_1_wechseln">7.5. Auf Page 1 wechseln</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -518,6 +534,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Der Tree sollte mit den gebrauchten Tabellen dann so aussehen:</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/image-2021-12-15-18-05-56-642.png" alt="image 2021 12 15 18 05 56 642">
@@ -525,11 +544,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="title">Figure 1. Ausgabe</div>
 </div>
 <div class="paragraph">
-<p>Hier wird dann nur beim <em>Click</em> die Id mitgegeben. Um den Namen oder anderes in den Textfields zu bekommen, muss man das dann <strong>Selecten</strong>.</p>
+<p>Wenn man auf einen Actor drückt, wird nur die Id mitgegeben. Um den Namen oder etwas anderes in den Textfields zu bekommen, muss man das dann ein <strong>Select</strong> ausführen.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_andere_felder"><a class="anchor" href="#_andere_felder"></a>1.2. Andere Felder</h3>
+<h3 id="_werte_in_den_feldern_setzten"><a class="anchor" href="#_werte_in_den_feldern_setzten"></a>1.2. Werte in den Feldern setzten</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -537,7 +556,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Bei jedem Textfeld ein <strong>SELECT</strong> schreiben.
+Bei jedem Textfeld ein <strong>SELECT</strong> schreiben damit die werte eingesetzt werden.
 </td>
 </tr>
 </table>
@@ -554,11 +573,20 @@ Bei jedem Textfeld ein <strong>SELECT</strong> schreiben.
 <div class="sect1">
 <h2 id="_images_post"><a class="anchor" href="#_images_post"></a>2. Images ("POST")</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Der Post wird verwendet, um Bilder zu den Schauspielern hinzuzufügen. Also eigentlich ein Update.</p>
+</div>
+<div class="paragraph">
+<p>Man erstellt einen Process der z.B. Update heißt. Hier weist man dann den Button zu, welcher dann der Auslöser des Processes ist.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/image-2021-12-15-20-50-29-193.png" alt="image 2021 12 15 20 50 29 193">
 </div>
-<div class="title">Figure 3. Wenn Button gedrückt wird wird der Process augeführt</div>
+<div class="title">Figure 3. Wenn Button <em>Save</em> gedrückt wird, wird der Process augeführt</div>
+</div>
+<div class="paragraph">
+<p><strong>Der folgende Save Code sieht so aus:</strong></p>
 </div>
 <div class="listingblock">
 <div class="title">Save Process</div>
@@ -634,11 +662,28 @@ Die einzelnen Felder müssen gleich sein
 <img src="images/image-2021-12-15-20-44-17-105.png" alt="image 2021 12 15 20 44 17 105">
 </div>
 </div>
+<div class="sect2">
+<h3 id="_blob_in_tabelle_als_column"><a class="anchor" href="#_blob_in_tabelle_als_column"></a>2.1. Blob in Tabelle als Column</h3>
+<div class="paragraph">
+<p>Unter:</p>
+</div>
+<div class="paragraph">
+<p>&#8594;SQL Workshop&#8594;(links) "Tabelle"&#8594;add column</p>
+</div>
+<div class="paragraph">
+<p>gibt man dann folgendes ein, um eine Blob column zu erstellen:</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/image-2021-12-15-20-22-08-355.png" alt="image 2021 12 15 20 22 08 355">
 </div>
 <div class="title">Figure 4. neue column (Blob)</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_report_füllen"><a class="anchor" href="#_report_füllen"></a>2.2. Report füllen</h3>
+<div class="paragraph">
+<p>Um den Report dann zu füllen, verwenden wir folgenden Code:</p>
 </div>
 <div class="listingblock">
 <div class="title">Blob in report</div>
@@ -646,16 +691,250 @@ Die einzelnen Felder müssen gleich sein
 <pre class="rouge highlight"><code data-lang="sql"><span class="k">Select</span> <span class="n">starnum</span><span class="p">,</span> <span class="n">starname</span><span class="p">,</span> <span class="n">birthplace</span><span class="p">,</span> <span class="n">cntryid</span><span class="p">,</span> <span class="n">starborn</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">dbms_lob</span><span class="p">.</span><span class="n">getlength</span><span class="p">(</span><span class="n">THUMBNAIL</span><span class="p">)</span> <span class="n">THUMBNAIL</span> <span class="k">FROM</span> <span class="n">Star</span><span class="p">;</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Wichtig ist es bei dem Blob(Thumbnail)  <code>dbms_lob.getlength(THUMBNAIL) THUMBNAIL</code> zu verwenden
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_wichtiges_aus_dem_doodle_beispiel"><a class="anchor" href="#_wichtiges_aus_dem_doodle_beispiel"></a>3. Wichtiges aus dem Doodle Beispiel</h2>
+<h2 id="_allgemein_wichtiges"><a class="anchor" href="#_allgemein_wichtiges"></a>3. Allgemein Wichtiges</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_classic_report"><a class="anchor" href="#_classic_report"></a>3.1. Classic Report</h3>
+<div class="paragraph">
+<p>Report findet man unter:</p>
+</div>
+<div class="paragraph">
+<p>Regions&#8594;Classic Report</p>
+</div>
+<div class="paragraph">
+<p>Rechts unter Source Findet man auch die SQL Query um den Report zu füllen.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-12-22-13-858.png" alt="image 2021 12 15 12 22 13 858">
+</div>
+<div class="title">Figure 5. Einfacher Report mit den Werten einer Tabelle.</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_diagramme"><a class="anchor" href="#_diagramme"></a>3.2. Diagramme</h3>
+<div class="paragraph">
+<p>Diagramme findet man unter  Layout &#8594; Regions &#8594; Chart</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-14-39-54-904.png" alt="image 2021 12 15 14 39 54 904">
+</div>
+<div class="title">Figure 6. Links das erstellte Diagram | Rechts die Oprion Chart</div>
+</div>
+<div class="paragraph">
+<p>Unter <strong>Atributes</strong> kann man auswählen was für ein Diagramm es sein soll.</p>
+</div>
+<div class="paragraph">
+<p>Atributes&#8594;(rechts) Chart&#8594;Type&#8594;`Auswahl Diagramtyp`</p>
+</div>
+<div class="paragraph">
+<p>Unter <strong>Series</strong> kann man die Diagramme dann "Zeichnen". Wenn man z.B. eine neue Serie erstellt wird eine neue Linie gezeichnet.<br>
+Wenn man auf eine <strong>Serie</strong> <em>Clicky Clicky</em> macht, hat man die Option eine SQL Query einzugeben.</p>
+</div>
+<div class="paragraph">
+<p>Series&#8594;New&#8594;(rechts) Source&#8594;Type: SQL Query&#8594;SQL Query</p>
+</div>
+<div class="paragraph">
+<p><strong>Beispiel für Linien Diagramm mit SQL Query:</strong></p>
+</div>
+<div class="listingblock">
+<div class="title">Es wird der umsatz mit dem Jahr+Monat in X gespeichert | Das wird als <em>Label</em> verwendet</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sql"><span class="k">Select</span> <span class="n">umsatz_eur</span><span class="p">,</span><span class="n">CONCAT</span><span class="p">(</span><span class="n">CONCAT</span><span class="p">(</span><span class="n">Monat</span><span class="p">,</span> <span class="s1">' '</span><span class="p">),</span> <span class="n">Jahr</span><span class="p">)</span> <span class="k">AS</span> <span class="n">X</span> <span class="k">from</span> <span class="n">verkauf</span></code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-14-51-55-390.png" alt="image 2021 12 15 14 51 55 390">
+</div>
+<div class="title">Figure 7. Einistellung</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-14-52-34-703.png" alt="image 2021 12 15 14 52 34 703">
+</div>
+<div class="title">Figure 8. Output</div>
+</div>
+<div class="paragraph">
+<p><strong>Weitere Diagram Queries:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sql"><span class="k">Select</span> <span class="nv">"verkaufid"</span><span class="p">,</span> <span class="nv">"JAHR"</span><span class="p">,</span> <span class="nv">"MONAT"</span><span class="p">,</span> <span class="nv">"UMSATZ_EUR"</span><span class="p">,</span> <span class="nv">"WERBUNG_TV_EUR"</span><span class="p">,</span> <span class="nv">"WERBUNG_ZEITG_EUR"</span><span class="p">,</span> <span class="nv">"ANZAHL_VERKAEUFER"</span><span class="p">,</span>
+<span class="k">sum</span><span class="p">(</span><span class="n">umsatz_eur</span><span class="p">)</span> <span class="n">over</span> <span class="p">(</span><span class="n">partition</span> <span class="k">by</span> <span class="n">jahr</span> <span class="k">order</span> <span class="k">by</span> <span class="n">monat</span> <span class="k">rows</span> <span class="k">between</span> <span class="n">unbounded</span> <span class="n">preceding</span> <span class="k">and</span> <span class="k">current</span> <span class="k">row</span><span class="p">)</span> <span class="k">as</span> <span class="n">kum_umsatz</span> <span class="k">from</span> <span class="nv">"VERKAUF"</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sql"><span class="k">select</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">CONCAT</span><span class="p">(</span><span class="n">Monat</span><span class="p">,</span> <span class="s1">' '</span><span class="p">),</span> <span class="n">Jahr</span><span class="p">)</span> <span class="k">AS</span> <span class="n">X</span><span class="p">,</span> <span class="k">avg</span><span class="p">(</span><span class="n">UMSATZ_EUR</span><span class="p">)</span> <span class="n">over</span><span class="p">(</span><span class="k">order</span> <span class="k">by</span> <span class="n">jahr</span><span class="p">,</span> <span class="n">monat</span> <span class="k">rows</span> <span class="k">between</span> <span class="mi">1</span> <span class="n">PRECEDING</span> <span class="k">and</span> <span class="mi">1</span> <span class="n">following</span><span class="p">)</span> <span class="n">test</span>  <span class="k">from</span> <span class="n">verkauf</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_process"><a class="anchor" href="#_process"></a>3.3. Process</h3>
+<div class="paragraph">
+<p>Um einen Process zu erstellen, geht man unter:</p>
+</div>
+<div class="paragraph">
+<p>Component View&#8594;Page Processing&#8594;Process&#8594;+</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-14-58-38-288.png" alt="image 2021 12 15 14 58 38 288">
+</div>
+</div>
+<div class="paragraph">
+<p>Wenn man dann auf new <em>Clicky Clicky</em> macht, kann man rechts einstellen was der Process machen soll.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-15-28-38-561.png" alt="image 2021 12 15 15 28 38 561">
+</div>
+<div class="title">Figure 9. Einstellung des Processes</div>
+</div>
+<div class="paragraph">
+<p>In dem PL/SQL Code Block schreibt man was der Process machen soll. Hier z.B. setzt er einen Text in ein Textfield.</p>
+</div>
+<div class="paragraph">
+<p>Hier wird der Auslöser definiert:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-15-32-04-008.png" alt="image 2021 12 15 15 32 04 008">
+</div>
+<div class="title">Figure 10. When Button Pressed</div>
+</div>
+<div class="paragraph">
+<p>Wenn man aber einen Process <code>After Submit</code> auslösen möchte, stellt man das hier ein:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-15-34-48-934.png" alt="image 2021 12 15 15 34 48 934">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_images"><a class="anchor" href="#_images"></a>3.4. Images</h3>
+<div class="paragraph">
+<p>Wenn man Bilder einfügen möchte, geht man rechts oben auf das Zeichen mit den Symbolen.</p>
+</div>
+<div class="paragraph">
+<p><strong>Location:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-21-12-976.png" alt="image 2021 12 15 18 21 12 976">
+</div>
+<div class="title">Figure 11. Location wo das Foto Hochgeladen wird</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-19-16-134.png" alt="image 2021 12 15 18 19 16 134">
+</div>
+<div class="title">Figure 12. Bild aussichen und dann <strong>Upload</strong></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-23-29-935.png" alt="image 2021 12 15 18 23 29 935">
+</div>
+<div class="title">Figure 13. Was nach dem # kommt is der Path</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-27-08-401.png" alt="image 2021 12 15 18 27 08 401">
+</div>
+<div class="title">Figure 14. Bild Anzeigen</div>
+</div>
+<div class="listingblock">
+<div class="title">static content</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sql"><span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="nv">"#WORKSPACE_IMAGES#Matt_CPU.jpg"</span> <span class="n">width</span><span class="o">=</span><span class="nv">"800"</span> <span class="n">height</span><span class="o">=</span><span class="nv">"600"</span><span class="o">&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_redirect"><a class="anchor" href="#_redirect"></a>3.5. Redirect</h3>
+<div class="paragraph">
+<p>Um einen Link zu erstellen, verwenden wir z.B. einen Report mit einer Column.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-48-33-425.png" alt="image 2021 12 15 18 48 33 425">
+</div>
+<div class="title">Figure 15. Ausgewählte Column</div>
+</div>
+<div class="paragraph">
+<p>Rechts dann unter Identification&#8594;Type und dann die gewählte Zeile wählen.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-50-33-749.png" alt="image 2021 12 15 18 50 33 749">
+</div>
+</div>
+<div class="paragraph">
+<p>Weiter unten auf der rechten Seite dann unter Link das auswählen was gemacht werden soll.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-51-52-470.png" alt="image 2021 12 15 18 51 52 470">
+</div>
+<div class="title">Figure 16. Target auswählen also Seite | und den Link Text also das was angezeigt wird</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2021-12-15-18-53-59-029.png" alt="image 2021 12 15 18 53 59 029">
+</div>
+<div class="title">Figure 17. Beim Target folgendes auswählen um einen Text auf der zweiten Seite anzeigen zu lassen</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tree_emp"><a class="anchor" href="#_tree_emp"></a>3.6. Tree Emp</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sql"><span class="k">select</span> <span class="k">case</span> <span class="k">when</span> <span class="n">connect_by_isleaf</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">then</span> <span class="mi">0</span>
+            <span class="k">when</span> <span class="k">level</span> <span class="o">=</span> <span class="mi">1</span>             <span class="k">then</span> <span class="mi">1</span>
+            <span class="k">else</span>                           <span class="o">-</span><span class="mi">1</span>
+       <span class="k">end</span> <span class="k">as</span> <span class="n">status</span><span class="p">,</span>
+       <span class="k">level</span><span class="p">,</span>
+       <span class="nv">"ENAME"</span> <span class="k">as</span> <span class="n">title</span><span class="p">,</span>
+       <span class="k">null</span> <span class="k">as</span> <span class="n">icon</span><span class="p">,</span>
+       <span class="nv">"EMPNO"</span> <span class="k">as</span> <span class="n">value</span><span class="p">,</span>
+       <span class="k">null</span> <span class="k">as</span> <span class="n">tooltip</span><span class="p">,</span>
+       <span class="k">null</span> <span class="k">as</span> <span class="n">link</span>
+<span class="k">from</span> <span class="nv">"#OWNER#"</span><span class="p">.</span><span class="nv">"EMP"</span>
+<span class="k">start</span> <span class="k">with</span> <span class="nv">"MGR"</span> <span class="k">is</span> <span class="k">null</span>
+<span class="k">connect</span> <span class="k">by</span> <span class="k">prior</span> <span class="nv">"EMPNO"</span> <span class="o">=</span> <span class="nv">"MGR"</span>
+<span class="k">order</span> <span class="n">siblings</span> <span class="k">by</span> <span class="nv">"ENAME"</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wichtiges_aus_dem_doodle_beispiel"><a class="anchor" href="#_wichtiges_aus_dem_doodle_beispiel"></a>4. Wichtiges aus dem Doodle Beispiel</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Credit: <a href="https://htl-profis.github.io/doodle-anleitung/">htl-profis-doodle</a></strong></p>
 </div>
 <div class="sect2">
-<h3 id="_selecct_list"><a class="anchor" href="#_selecct_list"></a>3.1. Selecct List</h3>
+<h3 id="_selecct_list"><a class="anchor" href="#_selecct_list"></a>4.1. Selecct List</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="sql"><span class="k">select</span> <span class="n">termin</span> <span class="n">d</span><span class="p">,</span> <span class="n">posid</span> <span class="n">r</span> <span class="k">from</span> <span class="n">abstimmung_position</span> <span class="k">where</span> <span class="n">kopfid</span> <span class="o">=</span> <span class="p">:</span><span class="n">P3_KOPFID</span></code></pre>
@@ -663,7 +942,7 @@ Die einzelnen Felder müssen gleich sein
 </div>
 </div>
 <div class="sect2">
-<h3 id="_create_tables"><a class="anchor" href="#_create_tables"></a>3.2. Create Tables</h3>
+<h3 id="_create_tables"><a class="anchor" href="#_create_tables"></a>4.2. Create Tables</h3>
 <div class="paragraph">
 <p>SQL Workshop&#8594;SQL Commands</p>
 </div>
@@ -710,7 +989,7 @@ Die Befehle nach der Reihe einfügen
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sequence_erstellen"><a class="anchor" href="#_sequence_erstellen"></a>3.3. Sequence erstellen</h3>
+<h3 id="_sequence_erstellen"><a class="anchor" href="#_sequence_erstellen"></a>4.3. Sequence erstellen</h3>
 <div class="paragraph">
 <p>&#8594; SQL-Workshop<br>
 &#8594; Object Browser<br>
@@ -729,214 +1008,519 @@ Die Befehle nach der Reihe einfügen
 </div>
 </div>
 <div class="sect1">
-<h2 id="_allgemein_wichtiges"><a class="anchor" href="#_allgemein_wichtiges"></a>4. Allgemein Wichtiges</h2>
+<h2 id="_create_tables_2"><a class="anchor" href="#_create_tables_2"></a>5. Create Tables</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_classic_report"><a class="anchor" href="#_classic_report"></a>4.1. Classic Report</h3>
 <div class="paragraph">
-<p>Report findet man unter:</p>
+<p>&#8594; SQL Workshop &#8594; SQL Commands</p>
 </div>
-<div class="paragraph">
-<p>Regions&#8594;Classic Report</p>
-</div>
-<div class="paragraph">
-<p>Rechts unter Source Findet man auch die SQL Query um den Report zu füllen.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/image-2021-12-15-12-22-13-858.png" alt="image 2021 12 15 12 22 13 858">
-</div>
-<div class="title">Figure 5. Einfacher Report mit den Werten einer Tabelle.</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_diagramme"><a class="anchor" href="#_diagramme"></a>4.2. Diagramme</h3>
-<div class="paragraph">
-<p>Diagramme findet man unter  Layout &#8594; Regions &#8594; Chart</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/image-2021-12-15-14-39-54-904.png" alt="image 2021 12 15 14 39 54 904">
-</div>
-<div class="title">Figure 6. Links das erstellte Diagram | Rechts die Oprion Chart</div>
-</div>
-<div class="paragraph">
-<p>Unter <strong>Atributes</strong> kann man auswählen was für ein Diagramm es sein soll.</p>
-</div>
-<div class="paragraph">
-<p>Atributes&#8594;(rechts) Chart&#8594;Type&#8594;`Auswahl Diagramtyp`</p>
-</div>
-<div class="paragraph">
-<p>Unter <strong>Series</strong> kann man die Diagramme dann "Zeichnen". Wenn man z.B. eine neue Serie erstellt wird eine neue Linie gezeichnet.<br>
-Wenn man auf eine <strong>Serie</strong> <em>Clicky Clicky</em> macht, hat man die Option eine SQL Query einzugeben.</p>
-</div>
-<div class="paragraph">
-<p>Series&#8594;New&#8594;(rechts) Source&#8594;Type: SQL Query&#8594;SQL Query</p>
-</div>
-<div class="paragraph">
-<p><strong>Beispiel für Linien Diagramm mit SQL Query:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Einen Befehl nach der Reihe kopieren sonst nix gehen :(</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
-<div class="title">Es wird der umsatz mit dem Jahr+Monat in X gespeichert | Das wird als <em>Label</em> verwendet</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sql"><span class="k">Select</span> <span class="n">umsatz_eur</span><span class="p">,</span><span class="n">CONCAT</span><span class="p">(</span><span class="n">CONCAT</span><span class="p">(</span><span class="n">Monat</span><span class="p">,</span> <span class="s1">' '</span><span class="p">),</span> <span class="n">Jahr</span><span class="p">)</span> <span class="k">AS</span> <span class="n">X</span> <span class="k">from</span> <span class="n">verkauf</span></code></pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/image-2021-12-15-14-51-55-390.png" alt="image 2021 12 15 14 51 55 390">
-</div>
-<div class="title">Figure 7. Einistellung</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/image-2021-12-15-14-52-34-703.png" alt="image 2021 12 15 14 52 34 703">
-</div>
-<div class="title">Figure 8. Output</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_process"><a class="anchor" href="#_process"></a>4.3. Process</h3>
-<div class="paragraph">
-<p>Um einen Process zu erstellen, geht man unter:</p>
-</div>
-<div class="paragraph">
-<p>Component View&#8594;Page Processing&#8594;Process&#8594;+</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/image-2021-12-15-14-58-38-288.png" alt="image 2021 12 15 14 58 38 288">
-</div>
-</div>
-<div class="paragraph">
-<p>Wenn man dann auf new <em>Clicky Clicky</em> macht, kann man rechts einstellen was der Process machen soll.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/image-2021-12-15-15-28-38-561.png" alt="image 2021 12 15 15 28 38 561">
-</div>
-<div class="title">Figure 9. Einstellung des Processes</div>
-</div>
-<div class="paragraph">
-<p>In dem PL/SQL Code Block schreibt man was der Process machen soll. Hier z.B. setzt er einen Text in ein Textfield.</p>
-</div>
-<div class="paragraph">
-<p>Hier wird der Auslöser definiert:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/image-2021-12-15-15-32-04-008.png" alt="image 2021 12 15 15 32 04 008">
-</div>
-<div class="title">Figure 10. When Button Pressed</div>
-</div>
-<div class="paragraph">
-<p>Wenn man aber einen Process <code>After Submit</code> auslösen möchte, stellt man das hier ein:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/image-2021-12-15-15-34-48-934.png" alt="image 2021 12 15 15 34 48 934">
-</div>
+<pre class="rouge highlight"><code data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">abstimmung</span><span class="p">(</span>
+    <span class="n">kopfid</span> <span class="n">NUMBER</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">name</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+    <span class="k">CONSTRAINT</span> <span class="n">pk_abstimmung</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">kopfid</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">abstimmung_position</span><span class="p">(</span>
+    <span class="n">kopfid</span> <span class="n">NUMBER</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">posid</span> <span class="n">NUMBER</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">termin</span> <span class="nb">DATE</span><span class="p">,</span>
+
+    <span class="k">CONSTRAINT</span> <span class="n">pk_abstimmung_position</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">posid</span><span class="p">),</span>
+    <span class="k">CONSTRAINT</span> <span class="n">fk_abstimmung</span> <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">kopfid</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">abstimmung</span><span class="p">(</span><span class="n">kopfid</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">abstimmung_ergebnis</span><span class="p">(</span>
+    <span class="n">ergid</span> <span class="n">NUMBER</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">posid</span> <span class="n">NUMBER</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">name</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="n">ergebnis</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+
+    <span class="k">CONSTRAINT</span> <span class="n">pk_abstimmung_ergebnis</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ergid</span><span class="p">),</span>
+    <span class="k">CONSTRAINT</span> <span class="n">fk_abstimmung_position</span> <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">posid</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">abstimmung_position</span><span class="p">(</span><span class="n">posid</span><span class="p">),</span>
+    <span class="k">CONSTRAINT</span> <span class="n">chk_abstimmung_ergebnis</span> <span class="k">CHECK</span><span class="p">(</span><span class="k">UPPER</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span> <span class="k">LIKE</span> <span class="s1">'Y'</span> <span class="k">OR</span> <span class="k">UPPER</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span> <span class="k">LIKE</span> <span class="s1">'N'</span><span class="p">)</span>
+<span class="p">)</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_images"><a class="anchor" href="#_images"></a>5. Images</h2>
+<h2 id="_create_sequences"><a class="anchor" href="#_create_sequences"></a>6. Create Sequences</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Wenn man Bilder einfügen möchte, geht man rechts oben auf das Zeichen mit den Symbolen.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>seq_kopfid</p>
+</li>
+<li>
+<p>seq_posid</p>
+</li>
+<li>
+<p>seq_ergid</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p><strong>Location:</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/image-2021-12-15-18-21-12-976.png" alt="image 2021 12 15 18 21 12 976">
-</div>
-<div class="title">Figure 11. Location wo das Foto Hochgeladen wird</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/image-2021-12-15-18-19-16-134.png" alt="image 2021 12 15 18 19 16 134">
-</div>
-<div class="title">Figure 12. Bild aussichen und dann <strong>Upload</strong></div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/image-2021-12-15-18-23-29-935.png" alt="image 2021 12 15 18 23 29 935">
-</div>
-<div class="title">Figure 13. Was nach dem # kommt is der Path</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/image-2021-12-15-18-27-08-401.png" alt="image 2021 12 15 18 27 08 401">
-</div>
-<div class="title">Figure 14. Bild Anzeigen</div>
-</div>
-<div class="listingblock">
-<div class="title">static content</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="sql"><span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="nv">"#WORKSPACE_IMAGES#Matt_CPU.jpg"</span> <span class="n">width</span><span class="o">=</span><span class="nv">"800"</span> <span class="n">height</span><span class="o">=</span><span class="nv">"600"</span><span class="o">&gt;</span></code></pre>
-</div>
+<p>&#8594; SQL-Workshop &#8594; Object Browser &#8594; Rechts aufs Plus &#8594; Sequence
+&#8594; Jeweiligen Namen in Sequence Name &#8594; <strong>Next</strong> &#8594; <strong>Create Sequence</strong></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_redirect"><a class="anchor" href="#_redirect"></a>6. Redirect</h2>
+<h2 id="_doodle_komplett"><a class="anchor" href="#_doodle_komplett"></a>7. Doodle komplett</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Um einen Link zu erstellen, verwenden wir z.B. einen Report mit einer Column.</p>
+<div class="sect2">
+<h3 id="_create_application"><a class="anchor" href="#_create_application"></a>7.1. Create Application</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Desktop</p>
+</li>
+<li>
+<p><strong>Name</strong>: Doodle
+&#160; <br>
+&#160; <br></p>
+</li>
+<li>
+<p><strong>Pages</strong>: Home-Page löschen</p>
+</li>
+<li>
+<p><strong>Add Page</strong></p>
+</li>
+<li>
+<p>Select Report</p>
+</li>
+</ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/image-2021-12-15-18-48-33-425.png" alt="image 2021 12 15 18 48 33 425">
+<img src="images/start-1.png" alt="500" width="500">
 </div>
-<div class="title">Figure 15. Ausgewählte Column</div>
 </div>
-<div class="paragraph">
-<p>Rechts dann unter Identification&#8594;Type und dann die gewählte Zeile wählen.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add Page</strong>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p><strong>Authentication Scheme</strong>: No Authentication</p>
+</li>
+<li>
+<p><strong>Date-Formats</strong>: optional auch leer sinds ok :)
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p><strong>Create Application</strong></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_master_detail_page"><a class="anchor" href="#_master_detail_page"></a>7.2. Master Detail Page</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Create Page</strong>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p><strong>Select Form</strong></p>
+</li>
+<li>
+<p><strong>Select Single Page Master Detail</strong></p>
+</li>
+</ul>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="images/master-detail.png" alt="500" width="500">
+</div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/image-2021-12-15-18-50-33-749.png" alt="image 2021 12 15 18 50 33 749">
+<img src="images/master-detail-2.png" alt="500" width="500">
 </div>
 </div>
-<div class="paragraph">
-<p>Weiter unten auf der rechten Seite dann unter Link das auswählen was gemacht werden soll.</p>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="images/master-detail-3.png" alt="500" width="500">
+</div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/image-2021-12-15-18-51-52-470.png" alt="image 2021 12 15 18 51 52 470">
+<img src="images/master-detail-4.png" alt="500" width="500">
 </div>
-<div class="title">Figure 16. Target auswählen also Seite | und den Link Text also das was angezeigt wird</div>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Create</strong>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p><strong>KOPFID</strong> auswählen und in der Default-Section die Sequence angeben</p>
+</li>
+</ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/image-2021-12-15-18-53-59-029.png" alt="image 2021 12 15 18 53 59 029">
-</div>
-<div class="title">Figure 17. Beim Target folgendes auswählen um einen Text auf der zweiten Seite anzeigen zu lassen</div>
+<img src="images/master-detail-5.png" alt="300" width="300">
 </div>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/master-detail-6.png" alt="500" width="500">
 </div>
-<div class="sect1">
-<h2 id="_tree_emp"><a class="anchor" href="#_tree_emp"></a>7. Tree Emp</h2>
-<div class="sectionbody">
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Optional</strong>: Name links auswählen und als Textfeld</p>
+</li>
+<li>
+<p><strong>Columns von Detail</strong> links aufklappen</p>
+</li>
+<li>
+<p><strong>POSID</strong> auswählen</p>
+</li>
+<li>
+<p>Vorgang wiederholen - andere Sequence natürlich :)</p>
+</li>
+<li>
+<p><strong>Datepicker</strong> auswählen</p>
+</li>
+<li>
+<p><strong>Rechts unter Settings</strong> &#8594; Show auf Both</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_selbst_abstimmen"><a class="anchor" href="#_selbst_abstimmen"></a>7.3. Selbst Abstimmen</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Neue Page erstellen
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p>Report &#8594; Interactive Grid</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/create-abstimmen.png" alt="500" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Keinen neuen Navigation Entry</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/create-abstimmen-2.png" alt="500" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Create</strong>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p><strong>Abstimmen Region</strong> links auswählen</p>
+</li>
+<li>
+<p>Vorhandene SQL Query mit Folgender ändern</p>
+</li>
+</ul>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sql"><span class="k">select</span> <span class="k">case</span> <span class="k">when</span> <span class="n">connect_by_isleaf</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">then</span> <span class="mi">0</span>
-            <span class="k">when</span> <span class="k">level</span> <span class="o">=</span> <span class="mi">1</span>             <span class="k">then</span> <span class="mi">1</span>
-            <span class="k">else</span>                           <span class="o">-</span><span class="mi">1</span>
-       <span class="k">end</span> <span class="k">as</span> <span class="n">status</span><span class="p">,</span>
-       <span class="k">level</span><span class="p">,</span>
-       <span class="nv">"ENAME"</span> <span class="k">as</span> <span class="n">title</span><span class="p">,</span>
-       <span class="k">null</span> <span class="k">as</span> <span class="n">icon</span><span class="p">,</span>
-       <span class="nv">"EMPNO"</span> <span class="k">as</span> <span class="n">value</span><span class="p">,</span>
-       <span class="k">null</span> <span class="k">as</span> <span class="n">tooltip</span><span class="p">,</span>
-       <span class="k">null</span> <span class="k">as</span> <span class="n">link</span>
-<span class="k">from</span> <span class="nv">"#OWNER#"</span><span class="p">.</span><span class="nv">"EMP"</span>
-<span class="k">start</span> <span class="k">with</span> <span class="nv">"MGR"</span> <span class="k">is</span> <span class="k">null</span>
-<span class="k">connect</span> <span class="k">by</span> <span class="k">prior</span> <span class="nv">"EMPNO"</span> <span class="o">=</span> <span class="nv">"MGR"</span>
-<span class="k">order</span> <span class="n">siblings</span> <span class="k">by</span> <span class="nv">"ENAME"</span></code></pre>
+<pre class="rouge highlight"><code data-lang="sql"><span class="k">select</span> <span class="n">ERGID</span><span class="p">,</span>
+       <span class="n">POSID</span><span class="p">,</span>
+       <span class="n">NAME</span><span class="p">,</span>
+       <span class="n">ERGEBNIS</span>
+  <span class="k">from</span> <span class="n">ABSTIMMUNG_ERGEBNIS</span>
+<span class="k">where</span> <span class="n">posid</span> <span class="k">in</span> <span class="p">(</span><span class="k">select</span> <span class="n">posid</span> <span class="k">from</span> <span class="n">abstimmung_position</span> <span class="k">where</span> <span class="n">kopfid</span><span class="o">=</span><span class="p">:</span><span class="n">P3_KOPFID</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>In Component View</strong>: Neues Page Item erstellen,</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/create-abstimmen-3.png" alt="500" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Region auswählen, gibt ja eh nur eine ;)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Columns links aufklappen
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p><strong>ERGID</strong> auswählen &#8594; zu Default</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/create-abstimmen-4.png" alt="create abstimmen 4">
+</div>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>POSID</strong> auswählen</p>
+</li>
+<li>
+<p>Type zu Select List ändern</p>
+</li>
+<li>
+<p>Bei List of Values als Type SQL Query auswählen</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sql"><span class="k">select</span> <span class="n">termin</span> <span class="n">d</span><span class="p">,</span> <span class="n">posid</span> <span class="n">r</span> <span class="k">from</span> <span class="n">abstimmung_position</span> <span class="k">where</span> <span class="n">kopfid</span> <span class="o">=</span> <span class="p">:</span><span class="n">P3_KOPFID</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Save</strong>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p><strong>Name</strong> auswählen</p>
+</li>
+<li>
+<p>Type zu Textfield ändern
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p><strong>Ergebnis</strong> auswählen</p>
+</li>
+<li>
+<p>Type zu Select List ändern</p>
+</li>
+<li>
+<p>Bei List of Values als Type Static Values auswählen</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>STATIC:Ja;Y,Nein;N</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_graph"><a class="anchor" href="#_graph"></a>7.4. Graph</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Neue Page erstellen &#8594; <strong>Chart</strong> &#8594; <strong>Bar</strong></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/graph.png" alt="500" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Keinen neuen Navigation Entry
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p>Soll wie folgt ausschauen:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/graph-2.png" alt="500" width="500">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sql"><span class="k">select</span> <span class="k">null</span><span class="p">,</span> <span class="n">to_char</span><span class="p">(</span><span class="n">TERMIN</span><span class="p">,</span> <span class="s1">'DD-MM-YYYY'</span><span class="p">)</span> <span class="k">as</span> <span class="n">Termin</span><span class="p">,</span>
+       <span class="p">(</span><span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">from</span> <span class="n">ABSTIMMUNG_ERGEBNIS</span> <span class="n">erg</span>
+       <span class="k">where</span> <span class="n">pos</span><span class="p">.</span><span class="n">POSID</span> <span class="o">=</span> <span class="n">erg</span><span class="p">.</span><span class="n">POSID</span> <span class="k">and</span> <span class="n">erg</span><span class="p">.</span><span class="n">ERGEBNIS</span><span class="o">=</span><span class="s1">'Y'</span><span class="p">)</span> <span class="k">as</span> <span class="k">Count</span>
+<span class="k">from</span> <span class="n">ABSTIMMUNG_POSITION</span> <span class="n">pos</span> <span class="k">where</span> <span class="n">pos</span><span class="p">.</span><span class="n">KOPFID</span> <span class="o">=</span> <span class="p">:</span><span class="n">P4_KOPFID</span><span class="p">;</span></code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/graph-3.png" alt="500" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Create</strong></p>
+</li>
+<li>
+<p>Optional: Links Series 1 auswählen und umbennenen (z.B. zu Result)</p>
+</li>
+<li>
+<p><strong>Save</strong>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p><strong>In Component View</strong>: Neues Page Item erstellen,</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/graph-4.png" alt="500" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Region auswählen, gibt ja eh nur eine ;)
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p><strong>Save</strong></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_auf_page_1_wechseln"><a class="anchor" href="#_auf_page_1_wechseln"></a>7.5. Auf Page 1 wechseln</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Abstimmung Region</strong> auswählen</p>
+</li>
+<li>
+<p>SQL Query auf Folgende ändern</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sql"><span class="k">select</span> <span class="n">name</span><span class="p">,</span> <span class="n">kopfid</span><span class="p">,</span> <span class="s1">'Ergebnis'</span> <span class="k">as</span> <span class="n">Ergebnis</span> <span class="k">from</span> <span class="n">abstimmung</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Columns links</strong> aufklappen
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p><strong>KOPFID</strong> auswählen &#8594; Type auf Hidden Column</p>
+</li>
+<li>
+<p><strong>Name</strong> auswählen &#8594; Type auf Link ändern &#8594; <strong>No Link Defined</strong> Button betätigen
+und zu folgendem ändern</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/home.png" alt="500" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Linktext in der Select List auf das 1. ändern (NAME)</p>
+</li>
+<li>
+<p><strong>Ergebnis</strong> auswählen &#8594; Type auf Link ändern &#8594; <strong>No Link Defined</strong> Button betätigen
+und zu folgendem ändern</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/home-2.png" alt="500" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Linktext in der Select List auf das 1. ändern (ERGEBNIS)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Credits für doodle:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Jonas Birklbauer</p>
+</li>
+<li>
+<p>Nico Bojer</p>
+</li>
+<li>
+<p>Tarik Hošić</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -944,7 +1528,7 @@ Wenn man auf eine <strong>Serie</strong> <em>Clicky Clicky</em> macht, hat man d
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-12-15 20:20:55 UTC
+Last updated 2021-12-15 21:02:34 UTC
 </div>
 </div>
 <style>
