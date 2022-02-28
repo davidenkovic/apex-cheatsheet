@@ -4,6 +4,7 @@
 
 === SQl Code
 
+.alte tree
 [source,sql]
 ----
 select 0 as status,
@@ -36,6 +37,24 @@ select -1,
 * *-1* sind die Äste
 * *0* sind die Blätter
 
+IMPORTANT: *Wenn man überprüfen will, ob ein Ast Null ist, verwenden wir Folgendes:*
+
+.tree für exists
+[source,sql]
+----
+select -1, -- -1 bei exists damit der Ast angezeigt wird
+        2,
+        ...
+        null from irgendwas
+        where exists (...)
+union
+select 0, -- 0 bei not exists
+        2,
+        ..
+        null from irgendwasAnderem
+        where not exists (...)
+----
+
 Der Tree sollte mit den gebrauchten Tabellen dann so aussehen:
 
 .Ausgabe
@@ -50,6 +69,26 @@ IMPORTANT: Bei jedem Textfeld ein *SELECT* schreiben damit die werte eingesetzt 
 .Select statemend für andere Zeilen
 image::images/image-2021-12-15-18-11-16-562.png[]
 
+== Report
+
+[source, sql]
+----
+Select * from Fehlermeldung where knr = :P1_SELECTLIST or  :P1_SELECTLIST = -10
+----
+
+image::images/image-2022-02-09-19-50-31-898.png[]
+
+image::images/image-2022-02-09-19-50-59-880.png[]
+
+== Validation
+
+.Datum überprüfen
+image::images/image-2022-02-09-19-53-13-453.png[]
+
+.Rechtsklick auf validation um neue zu erstellen
+image::images/image-2022-02-09-19-57-17-502.png[]
+
+image::images/image-2022-02-09-19-57-48-384.png[]
 
 == Images ("POST")
 
@@ -473,6 +512,9 @@ image::images/create-abstimmen-4.png[]
 ----
 select termin d, posid r from abstimmung_position where kopfid = :P3_KOPFID
 ----
+
+*d ... display* +
+*r ... return value oder so*
 
 - *Save*
 {nbsp} +
